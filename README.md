@@ -1,10 +1,15 @@
 # ReaderWriter
 Simple Reader Writer program in JAVA with Semaphore as lock.
 
+
 Running Test Cases:
 the program run with 2 arguments NoofReaders NoofWriters
 remote07:~> make
 javac *.java
+
+
+
+
 
 remote07:~> java CacheManagerDriver 3 2
 0 Reader wants to read from the cache.
