@@ -5,7 +5,8 @@ Running Test Cases:
 the program run with 2 arguments NoofReaders NoofWriters
 remote07:~> make
 javac *.java
-remote07:~/Platform9/ReaderWriter/src> java CacheManagerDriver 3 2
+
+remote07:~> java CacheManagerDriver 3 2
 0 Reader wants to read from the cache.
 writer 0 wants to write.
 0 ReaderThread is reading the cache.
