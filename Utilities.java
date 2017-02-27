@@ -10,6 +10,10 @@ public class Utilities {
 		nap(NAP_TIME);
 	}
 
+	/**
+	 * method send the thread to sleep to a particular duration
+	 * @param duration
+	 */
 	public static void nap(int duration) {
 		int sleeptime = (int) (NAP_TIME * Math.random());
 		try {

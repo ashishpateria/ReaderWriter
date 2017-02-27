@@ -6,11 +6,11 @@
  */
 public class Reader implements Runnable {
 	private int readerNum;
-	private LockInterface database;
+	private LockInterface cache;
 	
-
-	public Reader(LockInterface database, int readerNum) {
-		this.database = database;
+	public Reader(LockInterface cache, int readerNum) {
+		Logger.writeMessage("Reader Class Constructor called.", Logger.DebugLevel.CONSTRUCTOR);
+		this.cache = cache;
 		this.readerNum = readerNum;
 	}
 
@@ -18,14 +18,17 @@ public class Reader implements Runnable {
 	public void run() {
 
 		Utilities.nap();
-		System.out.println("reader " + readerNum + " wants to read.");
-		database.acquireReadLock(readerNum);
+		System.out.println(readerNum + " Reader wants to read from the cache.");
+		cache.acquireReadLock(readerNum);
 		Utilities.nap();
-		database.releaseReadLock(readerNum);
+		cache.releaseReadLock(readerNum);
 		
 
 	}
 	
+	/**
+	 * to string method for Reader Class
+	 */
 	public String  toString(){
 		return "Reader class object";
 	}

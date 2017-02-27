@@ -1,5 +1,7 @@
 import java.util.concurrent.Semaphore;
 
+//import Logger.DebugLevel;
+
 /**
  * Cache class to support multiple readers and writers
  * 
@@ -16,6 +18,7 @@ public class Cache implements LockInterface {
 	 *Constructor to initialize readercount and semaphores 
 	 */
 	public Cache() {
+		Logger.writeMessage("Cache Class Constructor called.", Logger.DebugLevel.CONSTRUCTOR);
 		readerCount = 0;
 		//Semaphore used as a lock for accessing the cache efficiently. 
 		cache = new Semaphore(1);
@@ -85,7 +88,7 @@ public class Cache implements LockInterface {
 			e.printStackTrace();
 		}
 		System.out.println( writerNum + " WriterThread is writing the cache.");
-		
+		mutex.release();
 	}
 
 	@Override

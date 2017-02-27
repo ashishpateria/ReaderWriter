@@ -1,4 +1,10 @@
-
+/**
+ * Basic driver class for Reader writer implementation
+ * Used Semaphore as a lock to implement consistent read/writes 
+ * 
+ * @author ashishpateria
+ *
+ */
 public class CacheManagerDriver {
 
 	public static int NUM_OF_READERS;
@@ -16,14 +22,16 @@ public class CacheManagerDriver {
 
 		NUM_OF_READERS = Integer.parseInt(args[0]);
 		NUM_OF_WRITERS = Integer.parseInt(args[1]);
+		
 		Thread[] readerArray = new Thread[NUM_OF_READERS];
 		Thread[] writerArray = new Thread[NUM_OF_WRITERS];
 
+		//Readers threads
 		for (int i = 0; i < NUM_OF_READERS; i++) {
 			readerArray[i] = new Thread(new Reader(cache, i));
 			readerArray[i].start();
 		}
-
+		//Writer Threads
 		for (int i = 0; i < NUM_OF_WRITERS; i++) {
 			writerArray[i] = new Thread(new Writer(cache, i));
 			writerArray[i].start();

@@ -1,12 +1,17 @@
-
+/**
+ * Writer class
+ * @author ashishpateria
+ *
+ */
 public class Writer implements Runnable {
 
-	private LockInterface database;
+	private LockInterface cache;
 	private int writerNum;
 
 	public Writer(LockInterface d, int w) {
+		Logger.writeMessage("Writer Class Constructor called.", Logger.DebugLevel.CONSTRUCTOR);
 		writerNum = w;
-		database = d;
+		cache = d;
 	}
 
 	@Override
@@ -15,14 +20,16 @@ public class Writer implements Runnable {
 		Utilities.nap();
 		System.out.println("writer " + writerNum + " wants to write.");
 
-		database.acquireWriteLock(writerNum);
+		cache.acquireWriteLock(writerNum);
 		Utilities.nap();
-		database.releaseWriteLock(writerNum);
+		cache.releaseWriteLock(writerNum);
 
 		
 
 	}
-	
+	/**
+	 * to string method
+	 */
 	public String  toString(){
 		return "Writer class object";
 	}
